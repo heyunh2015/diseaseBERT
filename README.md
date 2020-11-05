@@ -18,5 +18,7 @@ BioBERT (https://github.com/dmis-lab/biobert)
 
 BlueBERT (https://github.com/ncbi-nlp/bluebert)
 
-We use pytorch-based Hugginhface BERT but BioBERT and BlueBERT are based on tensforflow. For them, we use the method from this blog (https://medium.com/@manasmohanty/ncbi-bluebert-ncbi-bert-using-tensorflow-weights-with-huggingface-transformers-15a7ec27fc3d) to transfrom tensorflow-based models into pytorch-based version.
+We use pytorch-based Huggingface BERT but BioBERT and BlueBERT are based on tensforflow. For them, we use the method from this blog (https://medium.com/@manasmohanty/ncbi-bluebert-ncbi-bert-using-tensorflow-weights-with-huggingface-transformers-15a7ec27fc3d) to transfrom tensorflow-based models into pytorch-based version.
 
+Package:
+Python 3.6.8, Pytorch 1.4.0, Huggingface transformers 2.5.1
