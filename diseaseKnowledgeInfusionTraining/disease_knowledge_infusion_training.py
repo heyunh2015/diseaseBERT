@@ -260,34 +260,34 @@ def train(train_dataset, model, tokenizer):
             # softmax normalization which might keep more useful information.
             prediction_scores = outputs[1]
 
-            logtis_score_total = torch.tensor([1], dtype=torch.float)
-            logtis_score_total = logtis_score_total.to(device)
+            logits_score_total = torch.tensor([1], dtype=torch.float)
+            logits_score_total = logits_score_total.to(device)
             for i in range(len(prediction_scores)):
-                logtis_score = torch.tensor([0], dtype=torch.float)
-                logtis_score = logtis_score.to(device)
+                logits_score = torch.tensor([0], dtype=torch.float)
+                logits_score = logits_score.to(device)
                 prediction_score = prediction_scores[i]
                 maskTokenPosition = maskTokenPositionLists[i]#[1:]
                 tokenIds = removeZeros(batch[4][i].tolist())
 
                 if len(maskTokenPosition)==len(tokenIds):
                     for j in range(len(maskTokenPosition)):
-                        logtis_score += prediction_score[maskTokenPosition[j]][tokenIds[j]]
+                        logits_score += prediction_score[maskTokenPosition[j]][tokenIds[j]]
 
                 elif len(maskTokenPosition)==len(tokenIds)+1:
                     maskTokenPosition = maskTokenPosition[1:]
                     for j in range(len(maskTokenPosition)):
-                        logtis_score += prediction_score[maskTokenPosition[j]][tokenIds[j]]
+                        logits_score += prediction_score[maskTokenPosition[j]][tokenIds[j]]
 
                 elif len(maskTokenPosition)==len(tokenIds)+2:
                     maskTokenPosition = maskTokenPosition[2:]
                     for j in range(len(maskTokenPosition)):
-                        logtis_score += prediction_score[maskTokenPosition[j]][tokenIds[j]]
+                        logits_score += prediction_score[maskTokenPosition[j]][tokenIds[j]]
 
-                logtis_score_total += logtis_score
-            logtis_score_total = 1.0*len(prediction_scores)*10/logtis_score_total
-            logtis_score_total = logtis_score_total.to(device)
+                logits_score_total += logits_score
+            logits_score_total = 1.0*len(prediction_scores)*10/logits_score_total
+            logits_score_total = logits_score_total.to(device)
 
-            loss = loss_mlm + logtis_score_total
+            loss = loss_mlm + logits_score_total
 
             loss_epoch += loss
            
