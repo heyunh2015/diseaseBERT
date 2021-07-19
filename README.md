@@ -3,7 +3,7 @@ Code and dataset of EMNLP 2020 paper "Infusing Disease Knowledge into BERT for H
 
 Paper link: https://arxiv.org/pdf/2010.03746.pdf
 
-Author homepage: http://people.tamu.edu/~yunhe/
+Author homepage: https://heyunh2015.github.io/yunhe.github.io/
 
 In disease_knowledge_infusion_training.py, we show how to infuse diseae knowledge into BERT.
 You could change BERT to other BERT-like models mentioned in our paper: 
